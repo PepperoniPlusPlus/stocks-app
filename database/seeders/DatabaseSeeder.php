@@ -12,11 +12,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        $tickers = [
+            'AAPl',
+            'MSFT',
+            'GOOG',
+            'IBM',
+            'AMZN',
+            'DIS',
+            'NFLX',
+            'ABNB',
+            'TSLA',
+            'F',
+        ];
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        foreach ($tickers as $ticker) {
+            \App\Models\Stock::factory()->create([
+                'ticker' => $ticker,
+            ]);
+        }
     }
 }
