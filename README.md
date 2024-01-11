@@ -43,7 +43,7 @@ npm run build
 Tests can be run using:
 ```
 ./vendor/bin/sail test
-```†add ph
+```
 
 ### Notes
 API key for AlphaVantage can be found here: https://onetimesecret.com/secret/591mbtyloskkawue3z589lefbqwq69y, has to be added to the `.env` file using key `ALPHA_VANTAGE_API_KEY`
