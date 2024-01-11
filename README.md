@@ -23,9 +23,11 @@ Laravel Breeze was used to scaffold user authentication utilizing Sanctum.
 
 ### UI
 
-The UI was built using Vue.js, the only UI component is the User profile dashboard (in Dashboard.vue) which shows a table with tickers, their prices, and their price change trend.
+The UI was built using Vue.js, the only UI component is the User profile dashboard (in Dashboard.vue) which shows a table with tickers, their prices, and their price change trend:
+<img width="1203" alt="Screenshot 2024-01-11 at 23 46 42" src="https://github.com/PepperoniPlusPlus/stocks-app/assets/17961409/475f321e-ac51-409a-ada6-30ca9fa86d20">
 
 ### Running the code
+
 
 First step is installing the dependencies:
 ```
@@ -40,5 +42,7 @@ npm run build
 Tests can be run using:
 ```
 ./vendor/bin/sail test
-```
+```†add ph
 
+### Notes
+API key for AlphaVantage can be found here: https://onetimesecret.com/secret/591mbtyloskkawue3z589lefbqwq69y, has to be added to the `.env` file using key `ALPHA_VANTAGE_API_KEY`
