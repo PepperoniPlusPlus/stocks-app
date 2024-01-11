@@ -31,14 +31,15 @@ class StocksContoller extends Controller
                 // with array_shift we fetch the first 2 elements of the list which are going to be the latest (current) and previous price
                 $currentPrice = array_shift($latestPrices)['price'];
                 $previousPrice = array_shift($latestPrices)['price'];
+                $evolution = (($currentPrice - $previousPrice) / ($previousPrice)) / 100;
                 $stocksWithPriceChanges[] = [
                     'ticker' => $stockWithLatestPrice['ticker'],
-                    'price_evolution' => (($currentPrice - $previousPrice) / ($previousPrice)) / 100.
+                    'price_evolution' => round($evolution, 4),
                 ];
             }
 
             // cache for 1 minute, it expires next time we update
-            Cache::put(CacheKeys::StockPriceChanges->value, $stocksWithPriceChanges, 60 * 60);
+            Cache::put(CacheKeys::StockPriceChanges->value, $stocksWithPriceChanges, 60);
         }
 
 
