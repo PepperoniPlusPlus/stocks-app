@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Enums\CacheKeys;
 use App\Models\Stock;
 use App\Models\StockPrice;
 use App\Services\AlphaVantage\ApiClient;
@@ -29,11 +30,13 @@ class FetchLatestStockValues extends Command
      */
     public function handle()
     {
-        $tickers = Cache::get('stock-tickers');
+        $cacheKey = CacheKeys::Stocks->value;
+
+        $tickers = Cache::get($cacheKey);
 
         if (! $tickers) {
             $tickers = Stock::query()->get()->pluck('id', 'ticker')->toArray();
-            Cache::put('stock-tickers', $tickers);
+            Cache::put($cacheKey, $tickers);
         }
 
         $client = new ApiClient();
