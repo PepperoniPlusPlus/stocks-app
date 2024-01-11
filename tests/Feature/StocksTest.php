@@ -21,7 +21,7 @@ class StocksTest extends TestCase
         ]);
 
         $latestPrices = StockPrice::query()->orderBy('created_at', 'DESC')->limit(2)->pluck('price')->toArray();
-        $priceEvolution = (($latestPrices[0] - $latestPrices[1]) / ($latestPrices[1])) / 100;
+        $priceEvolution = round((($latestPrices[0] - $latestPrices[1]) / ($latestPrices[1])) / 100, 4);
 
         Cache::spy();
 
